@@ -8,6 +8,7 @@ function App() {
   const [state, setState] = useState({
     joke: "",
   });
+  const [categories, setCategories] =  useState([])
 
   useEffect(() => {
     fetchData();
@@ -22,11 +23,32 @@ function App() {
     });
   };
 
+
+  /*categorias*/
+
+  useEffect(() => {
+    fetchandsetjokes();
+    
+   
+  },[] )
+
+  const fetchandsetjokes = async () => {
+    const search = await axios.get("https://api.chucknorris.io/jokes/categories");
+    console.log(search.data.value);
+    setCategories({
+      ...categories,
+      joke: search.data.value,
+    });
+  };
+
+
+
   const { Option } = Select;
 
-  function onChange(value) {
-    console.log(`selected ${value}`);
-  }
+  /*const category = (value)=> {
+
+    const categorias = search.data.value,
+  };*/
   
   function onBlur() {
     console.log('blur');
@@ -53,7 +75,7 @@ function App() {
 
         <div class="selec">
           <Row justify="center">
-            <Col span={12} >
+            <Col span={12} className="categories" >
               <p> Categorias:</p>
             </Col>
             <Col span={12} >
@@ -62,7 +84,7 @@ function App() {
                 style={{ width: 200 }}
                 placeholder="Seleccione una categoria"
                 optionFilterProp="children"
-                onChange={onChange}
+                onChange={category}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onSearch={onSearch}
@@ -71,9 +93,21 @@ function App() {
                   0
                 }
               >
-                <Option value=""></Option>
-                <Option value=""></Option>
-                <Option value=""></Option>
+                <Option value="">animal</Option>
+                <Option value="">career</Option>
+                <Option value="">celebrity</Option>
+                <Option value="">dev</Option>
+                <Option value="">fashion</Option>
+                <Option value="">food</Option>
+                <Option value="">money</Option>
+                <Option value="">movie</Option>
+                <Option value="">music</Option>
+                <Option value="">political</Option>
+                <Option value="">religion</Option>
+                <Option value="">science</Option>
+                <Option value="">sport</Option>
+                <Option value="">travel</Option>
+
               </Select>
               ,
             </Col>
