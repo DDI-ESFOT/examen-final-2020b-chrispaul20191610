@@ -45,10 +45,10 @@ function App() {
 
   const { Option } = Select;
 
-  /*const category = (value)=> {
+  const category = (value)=> {
 
-    const categorias = search.data.value,
-  };*/
+    /*const categorias = search.data.value,*/
+  }
   
   function onBlur() {
     console.log('blur');
