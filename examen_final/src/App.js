@@ -79,7 +79,7 @@ function App() {
             </Col>
           </Row>
 
-          <div>
+          <div class="chiste">
             <p>{state.joke}</p>
 
           </div>
