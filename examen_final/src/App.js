@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Select, Row, Col } from "antd";
-import 'antd/dist/antd.css';
+import { Select, Row, Col, Button } from "antd";
+import "antd/dist/antd.css";
 import axios from "axios";
 
 function App() {
   const [state, setState] = useState({
     joke: "",
   });
-  const [categories, setCategories] =  useState([])
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -23,17 +23,16 @@ function App() {
     });
   };
 
-
   /*categorias*/
 
   useEffect(() => {
     fetchandsetjokes();
-    
-   
-  },[] )
+  }, []);
 
   const fetchandsetjokes = async () => {
-    const search = await axios.get("https://api.chucknorris.io/jokes/categories");
+    const search = await axios.get(
+      "https://api.chucknorris.io/jokes/categories"
+    );
     console.log(search.data.value);
     setCategories({
       ...categories,
@@ -41,30 +40,25 @@ function App() {
     });
   };
 
-
-
   const { Option } = Select;
 
-  const category = (value)=> {
-
+  const category = (value) => {
     /*const categorias = search.data.value,*/
-  }
-  
+  };
+
   function onBlur() {
-    console.log('blur');
-  }
-  
-  function onFocus() {
-    console.log('focus');
-  }
-  
-  function onSearch(val) {
-    console.log('search:', val);
+    console.log("blur");
   }
 
-  function handleMenuClick() {
-    
+  function onFocus() {
+    console.log("focus");
   }
+
+  function onSearch(val) {
+    console.log("search:", val);
+  }
+
+  function handleMenuClick() {}
 
   return (
     <>
@@ -75,10 +69,10 @@ function App() {
 
         <div class="selec">
           <Row justify="center">
-            <Col span={12} className="categories" >
+            <Col span={12} className="categories">
               <p> Categorias:</p>
             </Col>
-            <Col span={12} >
+            <Col span={12}>
               <Select
                 showSearch
                 style={{ width: 200 }}
@@ -107,15 +101,18 @@ function App() {
                 <Option value="">science</Option>
                 <Option value="">sport</Option>
                 <Option value="">travel</Option>
-
               </Select>
               ,
             </Col>
           </Row>
 
+          <div>
+          <Button type="primary" onClick={fetchData}>buscar otra broma</Button>
+
+          </div>
+
           <div class="chiste">
             <p>{state.joke}</p>
-
           </div>
         </div>
       </div>
