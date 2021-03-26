@@ -30,15 +30,15 @@ function App() {
   }, []);
 
   const fetchandsetjokes = async () => {
-    const search = await axios.get(
-      "https://api.chucknorris.io/jokes/categories"
+    const data = await axios.get(
+      "https://api.chucknorris.io/jokes/random?category={category}"
     );
-    console.log(search.data.value);
-    setCategories({
-      ...categories,
-      joke: search.data.value,
-    });
-  };
+
+    const jsonList = await data.json()
+    console.log('categories',jsonList)
+    setCategories( jsonList );
+   
+  }; fetchandsetjokes();
 
   const { Option } = Select;
 
