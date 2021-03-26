@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Select, Row, Col, Button } from "antd";
+import { Select, Row, Col, Button,Divider,Input } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 
@@ -115,7 +115,23 @@ function App() {
             <p>{state.joke}</p>
           </div>
         </div>
+        <Divider />
+
+        <div class="segunda seccion">
+        <Row justify="center" className="buscador">
+            <Col span={12} className="categories">
+              <p>Palabra Clave:</p>
+            </Col>
+            <Col span={12}>
+            <Input placeholder="ingrese texto" />
+              
+            </Col>
+          </Row>
+
+        </div>
+        
       </div>
+      
     </>
   );
 }
